@@ -6,8 +6,14 @@
     
     </head>
     <body>
-    <h1>Estoque de Tablets</h1>
-    <form
+        <h1>Estoque de Tablets</h1>
+        <form>
+            <input type:"text" name:"marca" placeholder:"Digite a marca...">
+            <input type:"text" name:"modelo" placeholder:"Digite a marca...">
+            <input type:"text" name:"cor" placeholder:"Digite a marca...">
+            <input type:"submit" name:"submit" value:"Buscar">
+        </form>
+
     
     
     
