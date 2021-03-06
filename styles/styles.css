@@ -10,43 +10,48 @@ body {
     background-color: #eee;
 }
 
-.topo{
+.topo {
+    height: 10%;
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     color: white;
     background-color: blue;
     font-family: sans-serif;
     letter-spacing: 10px;
+    text-transform: uppercase;
+    padding:0;
 }
 
-.menu{
-    width: 15%;
+.menu {
+    width: 230px;
+    height: 90%;
     background-color: cyan;
-    padding:10;
-
+    padding:0;
+    font-family: sans-serif;
+    position: absolute;
 }
 
 .menu ul {
-    color: black;
-    font-size: 25px;
     position: relative;
+    padding: 0px;
+    text-align: center;
+}
+
+.menu ul li a {
     padding: 10px;
-}
-
-.menu ul li a{
-    padding: 14px;
-    font-size: 20px;
+    font-size: 25px;
     display: block;
     text-decoration: none;
+    position: relative;
+    text-transform: uppercase;
 
 }
 
-.menu ul li:hoover a{
-    padding: 14px;
-    font-size: 20px;
-    display: block;
-    text-decoration: none;
-    background-color: blue;
+.menu ul li a:hover {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    width: 210px;
 
 }
 
@@ -55,10 +60,14 @@ body {
     font-size: 14px;
     display: block;
     text-decoration: none;
-    position: absolute;
+    position: relative;
+    text-transform: capitalize;
+    text-align: center;
 }
 
 .menu ul li ul li a:hover{
-    background-color: blue;
+    background-color: green;
     color: white;
+    padding: 10px;
+    width: 210px;
 }
