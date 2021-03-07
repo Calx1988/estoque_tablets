@@ -15,7 +15,7 @@
                     <li><a href="index.php">Home</a></li>
                     <li><a href="#">Tablets</a>
                         <ul>
-                            <li><a href="buscarTablet.php">Buscar Tablet</a></li>
+                            <li id="activepage"><a href="buscarTablet.php">Buscar Tablet</a></li>
                             <li><a href="cadastrarTablet.php">Cadastrar Tablet</a></li>
                         </ul>
                     </li>
