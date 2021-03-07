@@ -15,7 +15,7 @@
                     <li><a href="#">Tablets</a>
                         <ul>
                             <li><a href="buscarTablet.php">Buscar Tablet</a></li>
-                            <li><a href="#">Cadastrar Tablet</a></li>
+                            <li><a href="cadastrarTablet.php">Cadastrar Tablet</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Fornecedores</a>
@@ -26,6 +26,13 @@
                     </li>
                 </ul>
             </nav>
+        </div>
+        <div class="corpo">
+            <section>
+                <header><h2>Acesse o Menu à Esquerda<br><<<</h2></header>
+
+
+            </section>
         </div>
     </body>
 </html>

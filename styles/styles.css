@@ -80,12 +80,18 @@ body {
     height: 500px;
     display: inline-block;
     background-color: white;
-    text-align: center;
     text-transform: Uppercase;
+}
+
+.corpo header{
+    text-align: center;
+    margin: 15px;
 }
 
 .corpo label{
     font-size: 15px;
+    float: center;
+
 }
 .corpo input{
     margin: 10px;
