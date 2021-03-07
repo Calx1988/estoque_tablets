@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
     <head>
         <title>Buscar Tablet</title>
@@ -33,7 +33,7 @@
             <section>
                 <header><h2>Buscar Dispositivo</h2></header>
                 <form method="post" action="#">
-                    <label>Código do Tablet:</label>
+                    <label>Código:</label>
                     <input type="text" name="id" placeholder="Digite a ID...">
                     <label>Marca:</label>
                     <input type="text" name="marca" placeholder="Digite a marca.">
@@ -48,17 +48,10 @@
                         <option>Vermelho</option>
                         <option>Outro</option>
                     </select>
-                    <label>Preço:</label>
-                    <select name="preco">
-                        <option>Selecione o valor:</option>
-                        <option>Até R$150,00</option>
-                        <option>Até R$300,00</option>
-                        <option>Até R$500,00</option>
-                        <option>Até R$1000,00</option>
-                        <option>Acima de R$1000,00</option>
-                    </select>
-                    <label>Fornecedor</label>
-                    <input type="text" name="fornecedor" placeholder="Digite o fornecedor..."><br>
+                    <label>Preço Min.:</label>
+                    <input type="text" name="precomin" size="8">
+                    <label>Preço Máx.:</label>
+                    <input type="text" name="precomax" size="8"><br>
                     <button>Buscar</button>
                     <button>Limpar</button>
                 </form>

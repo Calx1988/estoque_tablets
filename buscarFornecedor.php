@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
     <head>
         <title>Buscar Tablet</title>
@@ -34,15 +34,13 @@
                 <header><h2>Buscar Fornecedor</h2></header>
                 <form method="post" action="#">
                     <label>CNPJ:</label>
-                    <input type="number" name="cnpj" placeholder="Digite o CNPJ...">
+                    <input type="text" name="cnpj" maxlength="11" minlength="11" placeholder="Digite o CNPJ...">
                     <label>Nome:</label>
-                    <input type="text" name="nome" placeholder="Digite o nome..."><br>
-                    <label>Logradouro:</label>
-                    <input type="text" name="logradouro" placeholder="Digite o logradouro...">
+                    <input type="text" name="nome" size="60" placeholder="Digite o nome..."><br>
                     <label>Cidade:</label>
-                    <input type="text" name="cidade" placeholder="Digite a cidade...">
+                    <input type="text" name="cidade" size="25" placeholder="Digite a cidade...">
                     <label>UF:</label>
-                    <input type="text" name="uf" maxlength="2" placeholder="Digite a UF..."><br>
+                    <input type="text" name="uf" maxlength="2" size="2"><br>
                     <button>Buscar</button>
                     <button>Limpar</button>
                 </form>
