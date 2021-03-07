@@ -91,10 +91,12 @@ body {
 .corpo label{
     font-size: 15px;
     float: center;
+    margin-left: 40px;
+    margin-right: 5px;
 
 }
 .corpo input{
-    margin: 10px;
+    margin: 10px 0;
     font-size: 15px;
 }
 
@@ -106,15 +108,10 @@ body {
     float: left;
 }
 
-.corpo section p{
-    margin: 15px;
-    font-size: 30px;
-    text-transform: uppercase;
-    horizontal-align: center;
-}
-.corpo button{
-    margin: 10px;
-    align:center;
+
+.acoes {
+    font-size: 20px;
+    alignment: center;
 }
 
 #activepage{

@@ -52,9 +52,9 @@
                     <input type="text" name="precomin" size="8">
                     <label>Preço Máx.:</label>
                     <input type="text" name="precomax" size="8"><br>
-                    <button>Buscar</button>
-                    <button>Limpar</button>
                 </form>
+                <button class="acoes">Buscar</button>
+                <button class="acoes">Limpar</button>
 
             </section>
         </div>

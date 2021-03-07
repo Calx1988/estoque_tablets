@@ -56,9 +56,9 @@
                 <select name="fornecedor">
                     <option>Selecione o fornecedor:</option>
                 </select><br>
-                <button>Cadastrar</button>
-                <button>Limpar</button>
             </form>
+            <button class="acoes">Cadastrar</button>
+            <button class="acoes">Limpar</button>
 
         </section>
     </div>

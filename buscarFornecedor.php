@@ -41,10 +41,9 @@
                     <input type="text" name="cidade" size="25" placeholder="Digite a cidade...">
                     <label>UF:</label>
                     <input type="text" name="uf" maxlength="2" size="2"><br>
-                    <button>Buscar</button>
-                    <button>Limpar</button>
                 </form>
-
+                <button class="acoes">Buscar</button>
+                <button class="acoes">Limpar</button>
             </section>
         </div>
     </body>
