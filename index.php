@@ -20,8 +20,8 @@
                     </li>
                     <li><a href="#">Fornecedores</a>
                         <ul>
-                            <li><a href="#">Buscar Fornecedor</a></li>
-                            <li><a href="#">Cadastrar Fornecedor</a></li>
+                            <li><a href="buscarFornecedor.php">Buscar Fornecedor</a></li>
+                            <li><a href="cadastrarFornecedor.php">Cadastrar Fornecedor</a></li>
                         </ul>
                     </li>
                 </ul>

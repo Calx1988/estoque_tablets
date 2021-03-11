@@ -21,7 +21,7 @@
                     </li>
                     <li><a href="#">Fornecedores</a>
                         <ul>
-                            <li id="activepage"><a href="buscarFornecedor.php">Buscar Fornecedor</a></li>
+                            <li><a href="buscarFornecedor.php">Buscar Fornecedor</a></li>
                             <li><a href="cadastrarFornecedor.php">Cadastrar Fornecedor</a></li>
                         </ul>
                     </li>

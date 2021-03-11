@@ -13,7 +13,7 @@ body {
 .topo {
     height: 10%;
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     background-color: blue;
     font-family: sans-serif;
@@ -25,7 +25,7 @@ body {
 .menu {
     width: 230px;
     height: 500px;
-    background-color: cyan;
+    background-color: #d7e0eb;
     padding:0;
     font-family: sans-serif;
     position: relative;
@@ -33,14 +33,13 @@ body {
 
 .menu ul {
     position: relative;
-    padding: 0px;
     text-align: center;
 }
 
 .menu ul li a {
-    padding: 10px;
+    padding: 5px;
     font-size: 25px;
-    display: block;
+    display: inline-block;
     text-decoration: none;
     position: relative;
     text-transform: uppercase;
@@ -49,13 +48,24 @@ body {
 
 .menu ul li a:hover {
     padding: 10px;
-    background-color: green;
+    font-size: 25px;
+    background-color: #d9dad9;
     color: white;
     width: 210px;
 
 }
 
 .menu ul li ul li a{
+
+    display: none;
+    text-decoration: none;
+    position: relative;
+    text-transform: capitalize;
+    text-align: center;
+    z-index:1;
+}
+
+.menu ul li:hover ul li a{
     padding: 10px;
     font-size: 14px;
     display: block;
@@ -66,7 +76,9 @@ body {
 }
 
 .menu ul li ul li a:hover{
-    background-color: green;
+    background-color: #d9dad9;
+    display: block;
+    position: relative;
     color: white;
     padding: 10px;
     width: 210px;
@@ -79,7 +91,7 @@ body {
     width: 1030px;
     height: 500px;
     display: inline-block;
-    background-color: white;
+    background-color: #f8f8f6;
     text-transform: Uppercase;
 }
 
@@ -114,7 +126,3 @@ body {
     alignment: center;
 }
 
-#activepage{
-    background-color: blue;
-    color: white;
-}
