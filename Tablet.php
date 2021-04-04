@@ -1,40 +1,61 @@
 <?php>
-    class Tablet{
-    private $id:Int;
-    private $marca:String;
-    private $modelo:String;
-    private $cor:String;
-    private $preco:Double;
-    private $fornecedor:String;
+    private class Tablet{
+        $id;
+        $brand;
+        $model;
+        $color;
+        $price;
+        $provider;
 
-    // Getters
+        // GETTERS
+        public function getId(){
+            return $this->id;
+        }
 
-    public function getId($id){
-        return $this->id;
-    }
+        public function getBrand(){
+            return $this->brand;
+        }
 
-    public function getMarca(){
-        return $this->marca;
-    }
+        public function getModel(){
+            return $this->model;
+        }
 
-    public function getModelo(){
-        return $this->modelo;
-    }
+        public function getColor(){
+            return $this->color;
+        }
 
-    public function getCor(){
-        return $this->cor;
-    }
+        public function getPrice(){
+            return $this->price;
+        }
 
-    public function getPreco(){
-        return $this->preco;
-    }
+        public function getProvider(){
+            return $this->provider;
+        }
 
-    public function getFornecedor(){
-        return $this->fornecedor;
-    }
+        // SETTERS
+        public function setId($id){
+            $this->id=$id;
+        }
 
-    // Setters
-    
+        public function setBrand($brand){
+            $this->brand=$brand;
+        }
+
+        public function setModel($model){
+            $this->modelo=$model;
+        }
+
+        public function setColo($color){
+            $this->cor=$color;
+        }
+
+        public function setPrice($price){
+            $this->price=$price;
+        }
+
+        public function setProvider($provider){
+            $this->provider=$provider;
+        }
 
     }
 
