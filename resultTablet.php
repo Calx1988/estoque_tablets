@@ -1,3 +1,8 @@
+<?php
+  require("includes/db.php");
+  require("includes/functions.php");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -25,7 +30,7 @@
                 <a class="nav-link" href="resultTablet.php">Dispositivos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="resultFornecedor.php">Fornecedores</a>
+                <a class="nav-link" href="resultProvider.php">Fornecedores</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Marcas</a>
@@ -46,7 +51,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text">ID</div>
             </div>
-            <input type="text" class="form-control" id="id" placeholder="Digite o ID...">
+            <input type="text" class="form-control" name="inpId" id="id" placeholder="Digite o ID...">
           </div>
           <label class="sr-only" for="brand">Marca</label>
           <div class="input-group mb-2 mr-sm-2">
@@ -54,9 +59,14 @@
               <div class="input-group-text">Marca</div>
             </div>
             <select name="slctBrand" id="brand" class="form-control">
-              <option value="">Selecione</option>
-              <option value="">Marca 1</option>
-              <option value="">Marca 2</option>
+              <option>Selecione</option>
+              <?php
+                $query="SELECT nome FROM marca";
+                $res=mysqli_query($connection, $query);
+                while($row=mysqli_fetch_array($res)){
+                  echo "<option> $row[nome] </option>";
+                }
+              ?>
             </select>
           </div>
           <label class="sr-only" for="model">Modelo</label>
@@ -65,9 +75,14 @@
               <div class="input-group-text">Modelo</div>
             </div>
             <select name="slctModel" id="model" class="form-control">
-              <option value="">Selecione</option>
-              <option value="">Modelo 1</option>
-              <option value="">Modelo 2</option>
+              <option>Selecione</option>
+              <?php
+                $query="SELECT nome FROM modelo";
+                $res=mysqli_query($connection, $query);
+                while($row=mysqli_fetch_array($res)){
+                  echo "<option> $row[nome] </option>";
+                }
+              ?>
             </select>
           </div>
           <label class="sr-only" for="color">Cor</label>
@@ -76,14 +91,14 @@
               <div class="input-group-text">Cor</div>
             </div>
             <select name="slctColor" id="color" class="form-control">
-              <option>Selecione</option>
-              <option>Preto</option>
-              <option>Branco</option>
-              <option>Cinza</option>
-              <option>Vermelho</option>
-              <option>Dourado</option>
-              <option>Azul</option>
-              <option>Rosa</option>
+              <option>Selecione a cor</option>
+              <?php
+                $query="SELECT nome FROM cor";
+                $res=mysqli_query($connection, $query);
+                while($row=mysqli_fetch_array($res)){
+                  echo "<option> $row[nome] </option>";
+                }
+              ?>
             </select>
           </div>
           <label class="sr-only" for="fabricationDate">Data de Fabricação</label>
@@ -95,6 +110,13 @@
             </div>
           </div>  
           <div class="form-inline">
+            <label class="sr-only" for="price">Preço</label>
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Preço</div>
+              </div>
+            <input type="number" class="form-control" name="inpPrice" id="Price" placeholder="R$ 0,00">
+            </div>
             <label class="sr-only" for="minPrice">Preço Mínimo</label>
               <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
@@ -115,9 +137,14 @@
                 <div class="input-group-text">Fornecedor</div>
               </div>
               <select name="slctProvider" id="provider" class="form-control">
-                <option value="">Selecione</option>
-                <option value="">Fornecedor 1</option>
-                <option value="">Fornecedor 2</option>
+                <option>Selecione</option>
+                <?php
+                  $query="SELECT nome FROM fornecedor";
+                  $res=mysqli_query($connection, $query);
+                  while($row=mysqli_fetch_array($res)){
+                    echo "<option> $row[nome] </option>";
+                  }
+                ?>
               </select>
             </div>
             <label class="sr-only" for="registerDate">Data de Cadastro</label>
@@ -128,37 +155,20 @@
               <input type="date" class="form-control" name="inpRegisterDate" id="registerDate" readonly>
             </div>
           </div>
-          <label class="sr-only" for="description">Descrição</label>
-            <div class="input-group mb-2 mr-sm-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Descrição</div>
-              </div>
-              <input type="textarea" class="form-control" name="inpDescription" id="description" placeholder="Tamanho de tela, OS, Wi-Fi, etc...">
-            </div>
           <div id="buttons">
-            <button class="btn btn-primary" type="submit" name="btnSearch">Buscar</button>
-            <button class="btn btn-primary" type="submit" name="btnSave">Salvar</button>
+            <button class="btn btn-primary" type="submit" name="btnSearchTablet">Buscar</button>
+            <button class="btn btn-primary" type="submit" name="btnSaveTablet">Salvar</button>
             <button class="btn btn-primary" type="reset" name="btnReset">Limpar</button>
           </div>
         </form>
       </div>
     </section>
     <section class="resultTable">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Modelo</th>
-            <th>Marca</th>
-            <th>Cor</th>
-            <th>Preço</th>
-            <th>Fornecedor</th>
-            <th>Data de Cadastro</th>
-            <th>Data de Fabricação</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-      </table>
+    <?php
+      searchTablet();
+      saveTablet();
+    ?>
+ 
     </section>
   </body>
 </html>

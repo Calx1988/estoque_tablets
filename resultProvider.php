@@ -1,3 +1,8 @@
+<?php
+  require("includes/db.php");
+  require("includes/functions.php");
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -27,7 +32,7 @@
                 <a class="nav-link" href="resultTablet.php">Dispositivos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="resultFornecedor.php">Fornecedores</a>
+                <a class="nav-link" href="resultProvider.php">Fornecedores</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Marcas</a>
@@ -42,13 +47,13 @@
     </header>
     <section id="inputForm">
       <div class="form-group">
-        <form method="POST" action="resultTablet.php" class="form-inline">
+        <form method="POST" action="resultProvider.php" class="form-inline">
           <label class="sr-only" for="id">ID</label>
           <div class="input-group mb-2 mr-sm-2">
             <div class="input-group-prepend">
               <div class="input-group-text">ID</div>
             </div>
-            <input type="text" class="form-control" id="id" placeholder="Digite o ID...">
+            <input type="text" class="form-control" id="id" name="inpId" placeholder="Digite o ID...">
           </div>
           <label class="sr-only" for="name">Nome</label>
           <div class="input-group mb-2 mr-sm-2">
@@ -64,12 +69,19 @@
             </div>
             <input type="text" class="form-control" id="cnpj" name="inpCnpj" placeholder="Digite o CNPJ...">
           </div>
+          <label class="sr-only" for="areaCode">DDD</label>
+          <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">DDD</div>
+            </div>
+            <input type="number" class="form-control" id="areaCode" name="inpAreaCode">
+          </div>
           <label class="sr-only" for="phone">Telefone</label>
           <div class="input-group mb-2 mr-sm-2">
             <div class="input-group-prepend">
               <div class="input-group-text">Telefone</div>
             </div>
-            <input type="text" class="form-control" id="phone" name="inpPhone" placeholder="(XX) XXXXX-XXXX">
+            <input type="number" class="form-control" id="phone" name="inpPhone" placeholder="Somente números">
           </div>              
           <div class="form-inline">
             <label class="sr-only" for="email">Email</label>
@@ -107,7 +119,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">CEP</div>
               </div>
-              <input type="text" class="form-control" name="inpCep" id="cep" placeholder="XXXXX-XXX">
+              <input type="number" class="form-control" name="inpCep" id="cep" placeholder="Somente números">
             </div>
             <label class="sr-only" for="city">Cidade</label>
             <div class="input-group mb-2 mr-sm-2">
@@ -121,33 +133,30 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">UF</div>
               </div>
-              <input type="text" class="form-control" name="inpState" id="state" placeholder="Digite o Estado...">
+              <select name="slctState" id="state" class="form-control">
+                <?php
+                  $query="SELECT sigla FROM estados";
+                  $res=mysqli_query($connection, $query);
+                  while($row=mysqli_fetch_array($res)){
+                    echo "<option> $row[sigla] </option>";
+                  }
+                ?>
+              </select>
+              
             </div>
           </div>
           <div id="buttons">
-            <button class="btn btn-primary" type="submit" name="btnSearch">Buscar</button>
-            <button class="btn btn-primary" type="submit" name="btnSave">Salvar</button>
+            <button class="btn btn-primary" type="submit" name="btnSearchProvider">Buscar</button>
+            <button class="btn btn-primary" type="submit" name="btnSaveProvider">Salvar</button>
             <button class="btn btn-primary" type="reset" name="btnReset">Limpar</button>
           </div>
         </form>
       </section>
       <section class="resultTable">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>CNPJ</th>
-              <th>Telefone</th>
-              <th>Email</th>
-              <th>Endereço</th>
-              <th>CEP</th>
-              <th>Cidade</th>
-              <th>UF</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-        </table>
+        <?php
+          searchProvider();
+          saveProvider();
+        ?>
       </section>
     </div>
   </body>

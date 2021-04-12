@@ -27,7 +27,7 @@
                         <a class="nav-link" href="resultTablet.php">Dispositivos</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="resultFornecedor.php">Fornecedores</a>
+                        <a class="nav-link" href="resultProvider.php">Fornecedores</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">Marcas</a>

@@ -1,49 +1,53 @@
-<?php>
-    private class Fornecedor{
-        $id;
-        $name;
-        $cnpj;
-        $phone;
-        $email;
-        $adress;
-        $number;
-        $complement;
-        $cep;
-        $city;
-        $state;
+<?php
+    class Fornecedor{
+        private $id;
+        private $cnpj;
+        private $name;
+        private $areaCode;
+        private $phone;
+        private $email;
+        private $adress;
+        private $number;
+        private $complement;
+        private $cep;
+        private $city;
+        private $state;
         
         // GETTERS
-        public function getId{
+        public function getId(){
             return $this->id;
         }
-        public function getName{
-            return $this->name;
-        }
-        public function getCnpj{
+        public function getCnpj(){
             return $this->cnpj;
         }
-        public function getPhone{
+        public function getName(){
+            return $this->name;
+        }
+        public function getAreaCode(){
+            return $this->areaCode;
+        }
+        public function getPhone(){
             return $this->phone;
         }
-        public function getEmail{
+        public function getEmail(){
             return $this->email;
         }
-        public function getAdress{
+        public function getAdress(){
             return $this->adress;
         }
-        public function getNumber{
+        public function getNumber(){
             return $this->number;
         }
-        public function getComplement{
+        public function getComplement(){
             return $this->complement;
         }
-        public function getCep{
+        public function getCep(){
             return $this->cep;
         }
-        public function getCity{
+        public function getCity(){
             return $this->city;
         }
-        public function getState{
+        public function getState(){
             return $this->state;
         }
 
@@ -51,11 +55,14 @@
         public function setId($id){
             $this->id=$id;
         }
+        public function setCnpj($cnpj){
+            $this->cnpj=$cnpj;
+        }
         public function setName($name){
             $this->name=$name;
         }
-        public function setCnpj($cnpj){
-            $this->cnpj=$cnpj;
+        public function setAreaCode($areaCode){
+            $this->areaCode=$areaCode;
         }
         public function setPhone($phone){
             $this->phone=$phone;
@@ -79,7 +86,12 @@
             $this->city=$city;
         }
         public function setState($state){
-            $this->state=$state;
+            global $connection;
+            $query="SELECT idEstado, sigla FROM estados WHERE sigla='$state'";
+            $res=mysqli_query($connection, $query);
+            while($obj=mysqli_fetch_object($res)){
+                $this->state=$obj->idEstado;
+              }
         }
     }
 
