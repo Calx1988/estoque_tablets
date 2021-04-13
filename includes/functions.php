@@ -27,6 +27,7 @@ function searchTablet(){
                     echo "</tr>";
                 echo "</thead>";  
                 while($obj=mysqli_fetch_object($run)){
+                    $idTablet=$obj->id;
                     echo "<tr>";
                         echo "<td>$obj->id</td>";
                         echo "<td>$obj->idMarca</td>";
@@ -36,8 +37,8 @@ function searchTablet(){
                         echo "<td>$obj->dataFabricacao</td>";
                         echo "<td>$obj->idFornecedor</td>";
                         echo "<td>$obj->dataCadastro</td>";
-                        echo "<td><a><button class='btn btn-primary' name='btnEditTablet'>Alterar</button></td></a>";
-                        echo "<td><a><button class='btn btn-danger' name='btnDeleteTablet'=>Excluir</button></td></a>";
+                        echo "<td><a href='functions.php?alterTablet($idTablet)'><button class='btn btn-primary' name='btnEditTablet'>Alterar</button></td></a>";
+                        echo "<td><a href='resultTablet.php?deleteTablet($idTablet)'><button class='btn btn-danger' name='btnDeleteTablet'=>Excluir</button></td></a>";
                     echo "</tr>";
                     unset($obj);
                 }
@@ -263,12 +264,13 @@ function saveProvider(){
 
 
 function deleteTablet(){
-    if(isset($_POST['btnDeleteTablet'])){
-        echo "<div class='alert alert-success' role='alert'>Registro deletado com sucesso!</div>";
+    if(isset($_GET['btnDeleteTablet'])){    
+    echo "<div class='alert alert-success' role='alert'>Registro deletado com sucesso!</div>";
         global $connection;
-        $id=$_GET['btnDeleteTablet'];
-        $delQuery="DELETE FROM tablet WHERE id=$id";
+        //global $idTablet;
+        $idTablet=$_GET['btnDeleteTablet'];
+        $delQuery="DELETE FROM tablet WHERE id=$idTablet";
         $delRun=mysqli_query($connection, $delQuery);
-        
+
     }
 }

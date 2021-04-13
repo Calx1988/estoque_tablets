@@ -1,0 +1,148 @@
+CREATE DATABASE estoque_tablets;
+
+USE estoque_tablets;
+
+// CREATING TABLES
+
+CREATE TABLE marca(
+	id INT AUTO_INCREMENT NOT NULL,
+	nome VARCHAR(25),
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE modelo(
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	nome VARCHAR(25) NOT NULL,
+	descricao VARCHAR(255),
+	idMarca INT NOT NULL,
+	FOREIGN KEY(idMarca) REFERENCES marca(id)
+);
+
+CREATE TABLE estados(
+	idEstado INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	nome VARCHAR(25) NOT NULL,
+	sigla VARCHAR(2) NOT NULL
+)
+
+CREATE TABLE fornecedor(
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	cnpj VARCHAR(25) NOT NULL,
+	nome VARCHAR(255) NOT NULL,
+	ddd INT NOT NULL,
+	telefone INT(10) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	endereco VARCHAR(50) NOT NULL,
+	numero INT NOT NULL,
+	complemento VARCHAR(50) NOT NULL,
+	cep INT(8) NOT NULL,
+	cidade VARCHAR(50) NOT NULL,
+	uf VARCHAR(25) NOT NULL
+);
+
+CREATE TABLE cor(
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	nome VARCHAR(25) NOT NULL
+)
+
+CREATE TABLE tablet(
+	id VARCHAR(25) NOT NULL PRIMARY KEY,
+	idMarca INT NOT NULL,
+	FOREIGN KEY(idMarca) REFERENCES marca(id),
+	idModelo INT NOT NULL,
+	FOREIGN KEY(idModelo) REFERENCES modelo(id),
+	idCor INT(2),
+	FOREIGN KEY(idCor) REFERENCES cor(id),
+	preco DECIMAL(7, 2) NOT NULL,
+	dataFabricacao DATE NOT NULL,
+	idFornecedor INT(2) NOT NULL,
+	FOREIGN KEY(idFornecedor) REFERENCES fornecedor(id),
+	dataCadastro DATE NOT NULL
+);
+
+//FILLING estados
+
+INSERT INTO estados (nome, sigla) VALUES (
+	"Rio Grande do Sul",
+	"RS"
+);
+
+INSERT INTO estados (nome, sigla) VALUES (
+	"Santa Catarina",
+	"SC"
+);
+
+//FILLING fornecedor
+
+INSERT INTO fornecedor (cnpj, nome, ddd, telefone, email, endereco, numero, complemento, cep, cidade, uf) VALUES (
+	"98765432120001", 
+	"BETA APARELHOS",
+	51,
+	32100123,
+	"contato@betaaparelhos.com.br",
+	"Av Godfrey de Bouillon",
+	153,
+	"Bairro Pinheiro",
+	98765430,
+	"Caxias do Sul",
+	1
+);
+
+INSERT INTO fornecedor (cnpj, nome, ddd, telefone, email, endereco, numero, complemento, cep, cidade, uf) VALUES (
+	"86420246860001", 
+	"KNIGHTS DEVICES",
+	51,
+	30630369,
+	"contato@knightdevices.com.br",
+	"Av Richard The Lionheart",
+	123,
+	"Distrito Industrial",
+	91765520,
+	"Joinville",
+	2
+);
+
+//FILLING marca
+
+INSERT INTO marca
+	VALUES("Apple");
+INSERT INTO marca
+	VALUES("Motorola");
+INSERT INTO marca
+	VALUES("Samsung");
+INSERT INTO marca
+	VALUES("Xiaomi");
+
+//FILLING modelo
+
+INSERT INTO modelo (nome, descricao, idMarca) VALUES (
+	"Apple IPAD(2020) Wi-fi",
+	"Display: 10.20-inch (2160x1620); Front Camera: 1.2MP",
+	1
+);
+INSERT INTO modelo (nome, descricao, idMarca) VALUES (
+	"Motorola Moto Tab",
+	"Display: 10.10-inch (1920x1080); Front Camera: 5MP",
+	2
+);
+INSERT INTO modelo (nome, descricao, idMarca) VALUES (
+	"Samsung Galaxy Tab Active",
+	"Display: 8.00-inch (1920x1200); Front Camera: 5MP",
+	3
+);
+INSERT INTO modelo (nome, descricao, idMarca) VALUES (
+	"Xiaomi Mi Pad 4 Plus",
+	"Display: 10.10-inch (1200x1920); Front Camera: 5MP",
+	4
+);
+
+//FILLING cor
+INSERT INTO cor (nome) VALUES (
+	"Preto",
+);
+INSERT INTO cor (nome) VALUES (
+	"Branco",
+);
+INSERT INTO cor (nome) VALUES (
+	"Cinza",
+);
+ 

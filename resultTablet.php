@@ -167,6 +167,7 @@
     <?php
       searchTablet();
       saveTablet();
+      deleteTablet();
     ?>
  
     </section>
