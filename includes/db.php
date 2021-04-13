@@ -1,4 +1,5 @@
 <?php
+    
     $connection = mysqli_connect('localhost','root', '', 'estoque_tablets');
 
     //check connection
