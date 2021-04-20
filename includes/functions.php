@@ -3,12 +3,15 @@ require_once("includes/db.php");
 require_once("classes/TabletClass.php");
 require_once("classes/ProviderClass.php");
 
+
+
+
 function searchTablet(){
     if(isset($_POST['btnSearchTablet'])){
         if(empty($_POST['inpId']) && $_POST['slctProvider']=="Selecione"){
             
             global $connection;
-            
+
             $query="SELECT * FROM tablet";
             $run=mysqli_query($connection, $query);
             echo "<table class='table table-striped'>";
@@ -27,7 +30,6 @@ function searchTablet(){
                     echo "</tr>";
                 echo "</thead>";  
                 while($obj=mysqli_fetch_object($run)){
-                    $idTablet=$obj->id;
                     echo "<tr>";
                         echo "<td>$obj->id</td>";
                         echo "<td>$obj->idMarca</td>";
@@ -37,19 +39,18 @@ function searchTablet(){
                         echo "<td>$obj->dataFabricacao</td>";
                         echo "<td>$obj->idFornecedor</td>";
                         echo "<td>$obj->dataCadastro</td>";
-                        echo "<td><a href='functions.php?alterTablet($idTablet)'><button class='btn btn-primary' name='btnEditTablet'>Alterar</button></td></a>";
-                        echo "<td><a href='resultTablet.php?deleteTablet($idTablet)'><button class='btn btn-danger' name='btnDeleteTablet'=>Excluir</button></td></a>";
+                        echo "<td><a href='resultTablet.php?btnEditTablet={$obj->id}'class='btn btn-primary' name='btnEditTablet'>Alterar</a></td>";
+                        echo "<td><a href='resultTablet.php?btnDeleteTablet={$obj->id}' class='btn btn-danger' name='btnDeleteTablet'>Excluir</a></td>";
                     echo "</tr>";
-                    unset($obj);
                 }
             echo "</table>";
-
+            
             if($run == TRUE){
                 echo "<div class='alert alert-success' role='alert'>Busca realizada com sucesso!</div>";
             }else{
                 echo "<div class='alert alert-danger' role='alert'>Erro! Busca não realizada.</div>";
             }
-        
+            
         }else if(!empty($_POST['inpId'])){
             global $connection;
             $searchItem=mysqli_real_escape_string($connection,$_POST['inpId']);
@@ -138,7 +139,7 @@ function searchTablet(){
                 echo "<div class='alert alert-danger' role='alert'>Erro! Busca não realizada.</div>";
             }
         }    
-    }
+    }    
 }
 
 function saveTablet(){
@@ -262,15 +263,16 @@ function saveProvider(){
     }
 }
 
-
-function deleteTablet(){
-    if(isset($_GET['btnDeleteTablet'])){    
-    echo "<div class='alert alert-success' role='alert'>Registro deletado com sucesso!</div>";
-        global $connection;
-        //global $idTablet;
-        $idTablet=$_GET['btnDeleteTablet'];
-        $delQuery="DELETE FROM tablet WHERE id=$idTablet";
-        $delRun=mysqli_query($connection, $delQuery);
-
-    }
+if(isset($_GET["btnDeleteTablet"])){   
+    $idTablet=$_GET['btnDeleteTablet'];
+    $delQuery="DELETE FROM tablet WHERE id='$idTablet'";
+    $delRun=mysqli_query($connection, $delQuery);
+    if($delRun){
+        echo "<div class='alert alert-success' role='alert'>Dispositivo foi deletado do Banco de Dados.</div>";
+    }else{
+        echo "<div class='alert alert-danger' role='alert'>Erro ao deletar dispositivo.</div>";
+    }    
+} 
+if(isset($_GET["btnEditTablet"])){
+    echo "<div class='alert alert-success' role='alert'>Corrija os dados.</div>";      
 }
